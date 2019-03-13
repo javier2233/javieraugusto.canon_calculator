@@ -1,0 +1,37 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+calculator_sum:
+    path: /sum/{firts}/{second}
+    defaults: {_controller: AppBundle:Calculator:sum}
+    requirements:
+        firts: '\d+'
+        second: '\d+'
+
+calculator_rest:
+    path: /rest/{firts}/{second}
+    defaults: {_controller: AppBundle:Calculator:rest}
+    requirements:
+        firts: '\d+'
+        second: '\d+'
+
+calculator_multi:
+    path: /multi
+    defaults: {_controller: AppBundle:Calculator:multi}
+    methods: [POST]
+
+calculator_pow:
+    path: /pow/{base}/{elevate}
+    defaults: {_controller: AppBundle:Calculator:pow}
+    methods: [POST]
+
+calculator_table:
+    path: /table/{table}/
+    defaults: {_controller: AppBundle:Calculator:table}
+    methods: [GET]
+
+calculator_div:
+    path: /div
+    defaults: {_controller: AppBundle:Calculator:div}
+    methods: [GET]
