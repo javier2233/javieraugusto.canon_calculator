@@ -6,35 +6,45 @@
  * Time: 8:56 PM
  */
 
+
 namespace AppBundle\Controller;
 
 
-use Symfony\Component\Config\Definition\Exception\Exception;
+
+use AppBundle\Component\Calculator;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Config\Definition\Exception\Exception;
+
 
 
 class CalculatorController
 {
+    private  $calculator; 
+
     function sumAction($firts, $second){
     //echo "algo";exit();
-        $sum = (int)($firts + $second);
+        $calculator = new Calculator();
+        $sum = $calculator->sumar($firts, $second);
         return new Response("<h1>$firts + $second = $sum</h1>");
     }
 
     function restAction($firts, $second){
         //echo "algo";exit();
-        $sum = (int)($firts - $second);
+        $calculator = new Calculator();
+        $sum = $calculator->restar($firts, $second);
         return new Response("<h1>$firts - $second = $sum</h1>");
     }
 
     function multiAction(){
+
+        $calculator = new Calculator();
         $request = Request::createFromGlobals();
 
         $firts = $request->request->get('firts');
         $second = $request->request->get('second');
 
-        $multi  = (int)($firts * $second);
+        $multi  = $calculator->multicar($firts, $second);
         return new Response("<h1>$firts * $second = $multi</h1>");
     }
 
@@ -44,32 +54,19 @@ class CalculatorController
     }
 
     function tableAction($table){
-        $table = "
-           $table * 1 = ". $table * 1 . " <br>
-           $table * 2 = ". $table * 2 . " <br>
-           $table * 3 = ". $table * 3 . " <br>
-           $table * 4 = ". $table * 4 . " <br>
-           $table * 5 = ". $table * 5 . " <br>
-           $table * 6 = ". $table * 6 . " <br>
-           $table * 7 = ". $table * 7 . " <br>
-           $table * 8 = ". $table * 8 . " <br>
-           $table * 9 = ". $table * 9 . " <br>
-           $table * 10 = ". $table * 10 . " ";
-        return new Response("<h1>$table</h1>");
+        $calculator = new Calculator();
+        return new Response("<h1>". $calculator->table($table). "</h1>");
     }
 
     function divAction(){
+
+        $calculator = new Calculator();
         $request = Request::createFromGlobals();
 
         $firts = $request->query->get('firts');
         $second = $request->query->get('second');
 
-        try{
-            $div  = (float)($firts / $second);
-
-        }catch (Exception $e){
-            $div  = $e->getMessage();
-        }
+        $div  = $calculator->division($firts, $second);
         return new Response("<h1>$firts / $second = $div</h1>");
     }
 }
