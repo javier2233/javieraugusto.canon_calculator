@@ -1,7 +1,7 @@
 AppBundle\Component\Entity\Product:
     type: entity
     table: products
-    repositoryClass: AppBundle\Component\Repository\ProductRepository
+    repositoryClass: AppBundle\Product\Repository\ProductRepository
     id:
         id:
             type: integer
