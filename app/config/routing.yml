@@ -2,6 +2,15 @@ app:
     resource: '@AppBundle/Controller/'
     type: annotation
 
+
+Create_product:
+    path: /create_product/{name}/{price}/{description}
+    defaults: {_controller: \AppBundle\Product\Controller\CreateProductController::createAction}
+
+list_product:
+    path: /list_products
+    defaults: {_controller: \AppBundle\Product\Controller\ListProductsController::listAction}
+
 calculator_sum:
     path: /sum/{firts}/{second}
     defaults: {_controller: AppBundle:Calculator:sum}

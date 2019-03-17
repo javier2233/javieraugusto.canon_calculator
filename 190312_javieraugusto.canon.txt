@@ -1,0 +1,7 @@
+url_repo:
+    https://github.com/javier2233/javieraugusto.canon_calculator
+
+Tag:
+    yaml-mapping
+Message:
+    Muchas gracias por todo
